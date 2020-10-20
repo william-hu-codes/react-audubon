@@ -198,7 +198,7 @@ Now you can replace the hard-coded values for the `img`'s `src` and `alt` tags a
 
 Once you have all of the birds displaying move on to the next step!
 
-### Step 5: Display Birds on the home route
+### Step 6: Display Birds on the home route
 
 Now that our component is complete we can use React Router to make it display only when we're on the home (`/`) route!
 
