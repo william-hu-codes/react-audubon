@@ -2,7 +2,7 @@
 
 # Audubon Society Website
 
-Build a website for the Audubon Society!
+Practice with useState, useEffect and React Router to build a website for the Audubon Society. [_Check out the completed project._](https://react-audubon-site.surge.sh/)
 
 ## Prerequisites
 
@@ -259,7 +259,7 @@ Next, import the component into the App.js and add a second route:
 </main>
 ```
 
-Now if you navigate to the details route in the browser by going to: http://localhost:3000/details, you should see the BirdDetails component display. 
+Now if you navigate to the details route in the browser by going to: http://localhost:3000/details, you should see the BirdDetails component display.
 
 Cool, but what we really want is to have the user navigate to a details page for a specific bird based on which card they click on the home route.
 
