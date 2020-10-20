@@ -39,7 +39,7 @@ Create a basic component named Birds put some placeholder text into it so that w
 
 Make sure that you can see the placeholder text being rendered in the browser before you move on to the next step.
 
-### Step 2. Add state to the Birds component
+### Step 3. Add state to the Birds component
 
 We'll be loading some data into the Birds component that we can use once we've fetched it from an API. We'll need a variable in _state_ to hold our data, so create a state variable called `birds` and initialize it with an empty array. Recall that to create state in a component, you'll need to import the `useState` hook and then follow the _pattern_ for creating a state variable:
 
@@ -49,7 +49,7 @@ We'll be loading some data into the Birds component that we can use once we've f
 // into a variable to hold the
 // data and another that is a
 // function to change the data
-const [variable, setVariable] = useState(); // <--Set the initial state here
+const [variable, setVariable] = useState(); // <--Set the initial state here by passing it an empty array []
 ```
 
 > Make sure that your state variable is inside the component but not inside the function's return statement!
@@ -58,7 +58,7 @@ Check the Components tab in the Chrome React Developer tools to make sure that t
 
 ![React Developer Tools showing an empty array in state](https://media.git.generalassemb.ly/user/17300/files/0536b880-12cd-11eb-8dc6-ead3dba1bb91)
 
-### Step 3. Fetch the birds data and add it to state
+### Step 4. Fetch the birds data and add it to state
 
 We want to get some data from our API so we'll need to use the `useEffect` hook with fetch. First, we need to import `useEffect` by destructuring it alongside the `useState` hook at the top of the Birds.js file.
 
@@ -66,7 +66,7 @@ We want to get some data from our API so we'll need to use the `useEffect` hook 
 import React, { useState, useEffect } from 'react';
 ```
 
-Next, we'll need to add useEffect to the component's function. Make sure to add it inside the Bird component function before the `return`. The `useEffect` takes two arguments. The first is a callback function and the second is the dependency array. Scaffold the useEffect like this:
+Next, we'll need to add useEffect to the component's function. Make sure to add it inside the Bird component function before the `return`. The `useEffect` hook takes two arguments. The first is a callback function and the second is the dependency array. Scaffold the useEffect like this:
 
 ```js
 useEffect(() => {}, []);
@@ -95,9 +95,9 @@ you are getting the data in the Bird component before moving on!
 
 ![React Developer Tools showing the bird data in state](https://media.git.generalassemb.ly/user/17300/files/85135180-12d2-11eb-8c4f-fc4a05426323)
 
-### Step 4. Display the Birds
+### Step 5. Display the Birds
 
-Now that we have data we can display the birds on the page. There are already some classes that are loaded in the index.css file that we'll use to style the page, so replace the placeholder text in the Bird component return with some JSX that produces the following HTML.
+Now that we have data we can display the birds on the page. There are already some classes that are loaded in the index.css file that we'll use to style the page, so replace the placeholder text in the Bird component's return with some JSX that produces the following HTML.
 
 First, just get your JSX to correctly output the HTML with hardcoded data:
 
@@ -117,7 +117,7 @@ First, just get your JSX to correctly output the HTML with hardcoded data:
 </section>
 ```
 
-Check the Elements tab the browser's dev tools and make sure that the classes are being correctly applied and there are no errors in the console.
+Check the Elements tab in the browser's dev tools and make sure that the classes are being correctly applied and there are no errors in the console.
 
 Your page should now be showing a single bird card like this:
 
@@ -145,7 +145,7 @@ return (
 );
 ```
 
-To output a card for each bird, we'll need to map over the array of birds so put curly braces inside the `section` and add the map method inside it:
+To output a card for each bird, we'll need to map over the array of birds, so put curly braces inside the `section` element and add the map method inside it:
 
 ```jsx
 return (
@@ -170,7 +170,7 @@ return (
 );
 ```
 
-Take the entire `div` with the className of card and move it inside the return of the callback function:
+Next, take the entire `div` with the className of card and move it inside the return of the callback function:
 
 ```jsx
 return (
@@ -194,7 +194,7 @@ return (
 );
 ```
 
-Now you can replace the hard-coded values for the `img`'s `src` and `alt` tags and the name of the bird that appears in the `h3` tag with the actual data. Remember when the map runs, it will iterate over the array. Each time it iterates,it passes a single bird object to the callback function. You can access the current bird object's properties by dotting into it (e.g., `bird.name` or `bird.genus`).
+Now you can replace the hard-coded values for the `img`'s `src` and `alt` tags and the name of the bird that appears in the `h3` tag with the actual data. Remember when the map runs, it will iterate over the array. Each time it iterates, it passes a single bird object to the callback function. You can access the current bird object's properties by dotting into it (e.g., `bird.name` or `bird.genus`).
 
 Once you have all of the birds displaying move on to the next step!
 
@@ -208,7 +208,7 @@ Back in App.js, remove the `Birds` component from the `main` and add a `Route` c
 import { Route } from 'react-router-dom';
 ```
 
-The `Route` component compares the current url in the browser address bar with its `path` attribute and if it matches it will render the corresponding component that is defined in either it's `render` attribute or `component` attribute. Lets use the component attribute:
+The `Route` component compares the current url in the browser address bar with its `path` attribute and if it matches it will render the corresponding component that is defined in either it's `render` attribute or `component` attribute. Let's use the component attribute:
 
 ```jsx
 <main>
@@ -218,7 +218,7 @@ The `Route` component compares the current url in the browser address bar with i
 
 The browser should still display all of the birds. However, if you navigate to a different route, such as http://localhost:3000/details, the component no longer displays!
 
-### Step 6: Create a new component to render a bird detail view
+### Step 7: Create a new component to render a bird detail view
 
 Create another component called `BirdDetails`. **Make sure to add a parameter called props.** Inside the component function add the following JSX as the return statement:
 
@@ -259,11 +259,11 @@ Next, import the component into the App.js and add a second route:
 </main>
 ```
 
-Now, if you navigate to the details route in the browser by going to: http://localhost:3000/details.
+Now if you navigate to the details route in the browser by going to: http://localhost:3000/details, you should see the BirdDetails component display. 
 
 Cool, but what we really want is to have the user navigate to a details page for a specific bird based on which card they click on the home route.
 
-### Step 7. Add a link to the Birds component
+### Step 8. Add a link to the Birds component
 
 Back in the Birds component, let's import the Link component from React Router:
 
@@ -271,7 +271,7 @@ Back in the Birds component, let's import the Link component from React Router:
 import { Link } from 'react-router-dom';
 ```
 
-When we're using React Router, we use the Link component any time we would normally use an anchor tag in HTML, except if we want to link to a page outside of our site (such as the read more anchor in the BirdDetails component). We'll wrap the entire div with the className of card inside the map method's return with the Link component. Then we need to set it's `to` attribute. This is like the `href` attribute for an anchor in HTML. Finally, we'll move the `key` prop from the div with the className of card to the Link component because it has to be on the first element in the return like this:
+When we're using React Router, we use the Link component any time we would normally use an anchor tag in HTML, except if we want to link to a page outside of our site (such as the "read more" anchor in the BirdDetails component). We'll wrap the entire div with the className of card inside the map method's return with the Link component. Then, we need to set it's `to` attribute. This is like the `href` attribute for an anchor in HTML. Finally, we'll move the `key` prop from the div with the className of card to the Link component because it has to be on the first element in the return like this:
 
 ```jsx
 {
@@ -290,13 +290,13 @@ When we're using React Router, we use the Link component any time we would norma
 }
 ```
 
-The value of the `to` property is being set to `/details/${bird.id}`. This means that each url will be different for each bird. This is how we'll make it so that we can render the data for the specific bird when clicked.
+The value of the `to` property is being set to `/details/${bird.id}`. This means that the url will be different for each bird. This is how we'll make it so that we can render the data for the specific bird that was clicked.
 
-### Step 8. Add a dynamic segment to the Route
+### Step 9. Add a dynamic segment to the Route
 
 The dynamic segment of a route path is called a _"param"_ in React Router. It is a part of the url that is not matched to a specific string. It's just a named variable that will match any value that's in that segment of the url after a forward slash (`/`).
 
-For example, the bird details routes will all start with `/details/` but after that, last forward slash there will be a unique id for a specific bird. Since these are all unique and we could have hundreds or thousands of birds, we wouldn't want to have to create a Route component for each one! So we'll update our existing Route component's path to tell it to match any url in the address bar that starts with `/details` and is followed by a forward slash and then anything else.
+For example, the bird details routes will all start with `/details/` but after the last forward slash, there will be a unique id for a specific bird. Since these are all unique and we could have hundreds or thousands of birds, we wouldn't want to have to create a Route component for each one! So we'll update our existing Route component's path to tell it to match any url in the address bar that starts with `/details` and is followed by a forward slash and then anything else.
 
 ```jsx
 <Route path="/details/:id" component={BirdDetails} />
@@ -310,7 +310,7 @@ Go to the home route by clicking on the site's title at the top of the page and 
 
 ![image](https://media.git.generalassemb.ly/user/17300/files/8a7e9500-12ee-11eb-88de-deb741d25fd1)
 
-### Step 9. Use the params to render the corresponding bird details
+### Step 10. Use the params to render the corresponding bird details
 
 Last step! Now we're going to use the id of the bird to make a fetch call for the details about our bird! Inside of the BirdDetails.js import both `useState` and `useEffect`.
 
