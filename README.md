@@ -39,9 +39,9 @@ Create a basic component named Birds put some placeholder text into it so that w
 
 Make sure that you can see the placeholder text being rendered in the browser before you move on to the next step.
 
-### Step 2. Add state to Birds.js
+### Step 2. Add state to the Birds component
 
-We'll be loading some data into the App.js that we can use once we've fetched it from an API. We'll need a variable in _state_ to hold our data, so create a state variable called `birds` and initialize it with an empty array. Recall that to create state in a component, you'll need to import the `useState` hook and then follow the _pattern_ for creating a state variable:
+We'll be loading some data into the Birds component that we can use once we've fetched it from an API. We'll need a variable in _state_ to hold our data, so create a state variable called `birds` and initialize it with an empty array. Recall that to create state in a component, you'll need to import the `useState` hook and then follow the _pattern_ for creating a state variable:
 
 ```js
 // Destructure the array that
