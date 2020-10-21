@@ -208,7 +208,7 @@ Back in App.js, remove the `Birds` component from the `main` and add a `Route` c
 import { Route } from 'react-router-dom';
 ```
 
-The `Route` component compares the current url in the browser address bar with its `path` attribute and if it matches it will render the corresponding component that is defined in either it's `render` attribute or `component` attribute. Let's use the component attribute:
+The `Route` component compares the current url in the browser address bar with its `path` attribute and if it matches it will render the corresponding component that is defined in either its `render` attribute or `component` attribute. Let's use the component attribute:
 
 ```jsx
 <main>
@@ -271,7 +271,9 @@ Back in the Birds component, let's import the Link component from React Router:
 import { Link } from 'react-router-dom';
 ```
 
-When we're using React Router, we use the Link component any time we would normally use an anchor tag in HTML, except if we want to link to a page outside of our site (such as the "read more" anchor in the BirdDetails component). We'll wrap the entire div with the className of card inside the map method's return with the Link component. Then, we need to set it's `to` attribute. This is like the `href` attribute for an anchor in HTML. Finally, we'll move the `key` prop from the div with the className of card to the Link component because it has to be on the first element in the return like this:
+When we're using React Router, we use the Link component any time we would normally use an anchor tag in HTML, except if we want to link to a page outside of our site (such as the "read more" anchor in the BirdDetails component).
+
+To make each bird's card clickable, we'll wrap the entire div with the className of card that is inside the map method's return with the Link component. Then, we need to set its `to` attribute. This is like the `href` attribute for an anchor in HTML. Finally, we'll move the `key` prop from the div with the className of card to the Link component because the key prop always has to be on the first element in the return like this:
 
 ```jsx
 {
@@ -290,23 +292,25 @@ When we're using React Router, we use the Link component any time we would norma
 }
 ```
 
-The value of the `to` property is being set to `/details/${bird.id}`. This means that the url will be different for each bird. This is how we'll make it so that we can render the data for the specific bird that was clicked.
+We're using some JavaScript string interpolation here to set the value of the `to` property to `/details/${bird.id}`. This means that the url will be different for each bird. This is how we'll make it so that we can render the data for the specific bird that was clicked.
 
 ### Step 9. Add a dynamic segment to the Route
 
 The dynamic segment of a route path is called a _"param"_ in React Router. It is a part of the url that is not matched to a specific string. It's just a named variable that will match any value that's in that segment of the url after a forward slash (`/`).
 
-For example, the bird details routes will all start with `/details/` but after the last forward slash, there will be a unique id for a specific bird. Since these are all unique and we could have hundreds or thousands of birds, we wouldn't want to have to create a Route component for each one! So we'll update our existing Route component's path to tell it to match any url in the address bar that starts with `/details` and is followed by a forward slash and then anything else.
+For example, the bird details routes will all start with `/details/` but after the last forward slash there will be a unique id for a specific bird. Since these are all unique and we could have hundreds or thousands of birds, we wouldn't want to have to create a Route component for each one! So we'll update our existing Route component's path to tell it to match any url in the address bar that starts with `/details` and is followed by a forward slash and then anything else.
 
 ```jsx
 <Route path="/details/:id" component={BirdDetails} />
 ```
 
-This will mean that if we try and navigate to http://localhost:3000/details now, it will no long match the route path because there's nothing after details in the URL. However, if we navigate to http://localhost:3000/details/a, it now matches the _pattern_ in the `path` attribute of one of the Route components!
+This will mean that if we try and navigate to http://localhost:3000/details now, it will no long match the route path because there's nothing after "details" in the URL. However, if we navigate to http://localhost:3000/details/a, it now matches the _pattern_ in the `path` attribute of one of the Route components!
 
-Another thing that happens is that we now have the ability to get the value of the dynamic segment using it's variable name. In this case, we used the variable name `id` for this param when we defined the route when we wrote `:id`. The param variable's name is whatever we put after the colon.
+Another thing that happens is that we now have the ability to get the value of the dynamic segment using its variable name. In this case, we used the variable name `id` for this param when we defined the route and wrote `:id`. The param variable's name is whatever we put after the colon.
 
-Go to the home route by clicking on the site's title at the top of the page and then click on any of the birds. Notice that the link matches the pattern for the BirdDetails route and displays the static component data that's in BirdDetails right now. Now, go to the Component tab in the browser and click on the BirdDetails component in the tree. Notice that there are now three new objects in props: `history`, `location`, and `match`! All of these objects are data that is passed to our component by the Route that renders it. Toggle open the `match` object and note that the params object inside it contains an `id` property with the id of the bird that you clicked!
+Go to the home route by clicking on the site's title at the top of the page and then click on any of the birds. Notice that the link matches the pattern for the BirdDetails route and displays the static component data that's in BirdDetails right now.
+
+Now, go to the Component tab in the browser and click on the BirdDetails component in the tree. Notice that there are now three new objects in props: `history`, `location`, and `match`! All of these objects are data that is passed to our component by the Route that renders it. Toggle open the `match` object and note that the params object inside it contains an `id` property with the id of the bird that you clicked!
 
 ![image](https://media.git.generalassemb.ly/user/17300/files/8a7e9500-12ee-11eb-88de-deb741d25fd1)
 
@@ -328,7 +332,7 @@ useEffect(() => {}, []);
 
 Next, we need to add the fetch call into the useEffect callback just as we did earlier, except in this case the url is going to be: https://audubon-api.herokuapp.com/api/birds/ + the bird's id and instead of using `setBirds` to put the json data into state, we'll use the `setBird` method here.
 
-How can we get the id of the bird? Dot into it through the props object (or you can be fancy and destructure out `match` in your function's parameters) and concatenate it to the end of the url's string! Use the Component tab to make sure that you're set is being set and then update the JSX so that the bird image, name, genus and conservationStatus are being displayed based on the data in state (in the `bird` object).
+How can we get the id of the bird? Dot into it through the props object (or you can be fancy and destructure out `match` in your function's parameters) and concatenate it to the end of the url's string! Use the Component tab to make sure that you're bird object is in state and then update the JSX so that the bird image, name, genus and conservationStatus are being displayed based on the data in state (in the `bird` object).
 
 > ### Why Use Multiple API Calls?
 >
