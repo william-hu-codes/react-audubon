@@ -336,7 +336,7 @@ How can we get the id of the bird? Dot into it through the props object (or you 
 
 > ### Why Use Multiple API Calls?
 >
-> Maybe it seems like it's inefficient to make another call to the API. Most times it's not, and it also provides a better user experience! Using this approach means that users can bookmark a "page" or share a url via social media or email for a specific "page". Because every component is completely self-contained and responsible for getting it's own data, everything works perfectly when the bookmarked or shared link is visited!
+> Maybe it seems like it's inefficient to make another call to the API. Most times it's not, and it also provides a better user experience! Using this approach means that users can bookmark a "page" or share a url via social media or email for a specific "page". Because every component is completely self-contained and responsible for getting its own data, everything works perfectly when the bookmarked or shared link is visited!
 
 ## Bonus:
 
