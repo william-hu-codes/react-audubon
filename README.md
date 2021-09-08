@@ -338,6 +338,25 @@ How can we get the id of the bird? Dot into it through the props object (or you 
 >
 > Maybe it seems like it's inefficient to make another call to the API. Most times it's not, and it also provides a better user experience! Using this approach means that users can bookmark a "page" or share a url via social media or email for a specific "page". Because every component is completely self-contained and responsible for getting its own data, everything works perfectly when the bookmarked or shared link is visited!
 
+#### Hint: Getting an error that says "Cannot read property name of null" when trying to dot into bird data? 
+
+React is throwing an error because the API call hasn't finished updating the value of `bird` in state before your component is trying to dot into the bird object and render it. To fix that, try adding a conditional before your normal component return: 
+
+```jsx
+
+//this will render as long as bird is null
+if (!bird) {
+  return <p>Loading bird information ...</p>
+}
+
+//this will render if the above if statement is no longer true
+return (
+  // normal return 
+)
+
+```
+
+
 ## Bonus:
 
 Finished everything above and want to stretch your brain? Try adding a static create route.
