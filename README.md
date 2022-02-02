@@ -24,7 +24,7 @@ The Audubon Society has asked you to build them a website where users can see an
 
 ### Step 1. Install React Router
 
-To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file exactly in the same way that we did it during the [lecture](https://git.generalassemb.ly/sei-921/react-router/blob/master/README.md#importing-dependencies).
+To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file in the same way that we did it during the [lecture](https://git.generalassemb.ly/sei-1213/react-router/blob/master/README.md#importing-dependencies).
 
 1. Use the npm command to install `react-router-dom`.
 1. In the index.js file `import { BrowserRouter as Router } from 'react-router-dom'`.
@@ -49,7 +49,7 @@ We'll be loading some data into the Birds component that we can use once we've f
 // into a variable to hold the
 // data and another that is a
 // function to change the data
-const [variable, setVariable] = useState(); // <--Set the initial state here by passing it an empty array []
+const [ variable, setVariable ] = useState() // <--Set the initial state here by passing it an empty array []
 ```
 
 > Make sure that your state variable is inside the component but not inside the function's return statement!
@@ -72,7 +72,7 @@ Next, we'll need to add useEffect to the component's function. Make sure to add 
 useEffect(() => {}, []);
 ```
 
-Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-809/APIs-Ajax#the-api-response) lecture for your fetch call:
+Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-1213/APIs-Ajax#the-api-response) lecture for your fetch call:
 
 ```js
 fetch(url) //<-- the url as a string
@@ -85,7 +85,7 @@ fetch(url) //<-- the url as a string
     // use the setBirds method put the json into state
   })
   // Catch and log any errors to the console
-  .catch(console.error);
+  .catch(console.error)
 ```
 
 Leave the dependency array (the second argument) empty to signal to React that it should only run this useEffect one time when the component is mounted, so that we don't get an infinite loop of fetch requests.
@@ -188,7 +188,7 @@ return (
             <h3>Acadian Flycatcher</h3>
           </div>
         </div>
-      );
+      )
     })}
   </section>
 );
@@ -205,14 +205,16 @@ Now that our component is complete we can use React Router to make it display on
 Back in App.js, remove the `Birds` component from the `main` and add a `Route` component. Remember that the `Route` component must be imported from `react-router-dom`.
 
 ```js
-import { Route } from 'react-router-dom';
+import { Route } from 'react-router-dom'
 ```
 
-The `Route` component compares the current url in the browser address bar with its `path` attribute and if it matches it will render the corresponding component that is defined in either its `render` attribute or `component` attribute. Let's use the component attribute:
+The `Route` component compares the current url in the browser address bar with its `path` attribute and if it matches it will render the corresponding component that is defined in either its `render` attribute or `element` attribute. Let's use the component attribute:
 
 ```jsx
 <main>
-  <Route path="/" exact component={Birds} />
+  <Routes>
+    <Route path="/" element={ <Birds /> } />
+  </Routes>
 </main>
 ```
 
@@ -254,8 +256,8 @@ Next, import the component into the App.js and add a second route:
 
 ```jsx
 <main>
-  <Route path="/" exact component={Birds} />
-  <Route path="/details" component={BirdDetails} />
+  <Route path="/" element={ <Birds /> } />
+  <Route path="/details" element={ <BirdDetails /> } />
 </main>
 ```
 
@@ -268,7 +270,7 @@ Cool, but what we really want is to have the user navigate to a details page for
 Back in the Birds component, let's import the Link component from React Router:
 
 ```jsx
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 ```
 
 When we're using React Router, we use the Link component any time we would normally use an anchor tag in HTML, except if we want to link to a page outside of our site (such as the "read more" anchor in the BirdDetails component).
@@ -278,13 +280,13 @@ To make each bird's card clickable, we'll wrap the entire div with the className
 ```jsx
 {
   birds.map((bird) => (
-    <Link to={`/details/${bird.id}`} key={bird.id}>
+    <Link to={`/details/${ bird.id }`} key={ bird.id }>
       <div className="card">
         <div className="card-image">
-          <img src={bird.image} alt={bird.name} />
+          <img src={ bird.image } alt={ bird.name } />
         </div>
         <div className="card-title">
-          <h3>{bird.name}</h3>
+          <h3>{ bird.name }</h3>
         </div>
       </div>
     </Link>
@@ -292,7 +294,7 @@ To make each bird's card clickable, we'll wrap the entire div with the className
 }
 ```
 
-We're using some JavaScript string interpolation here to set the value of the `to` property to `/details/${bird.id}`. This means that the url will be different for each bird. This is how we'll make it so that we can render the data for the specific bird that was clicked.
+We're using some JavaScript string interpolation here to set the value of the `to` property to `/details/${ bird.id }`. This means that the url will be different for each bird. This is how we'll make it so that we can render the data for the specific bird that was clicked.
 
 ### Step 9. Add a dynamic segment to the Route
 
@@ -301,7 +303,7 @@ The dynamic segment of a route path is called a _"param"_ in React Router. It is
 For example, the bird details routes will all start with `/details/` but after the last forward slash there will be a unique id for a specific bird. Since these are all unique and we could have hundreds or thousands of birds, we wouldn't want to have to create a Route component for each one! So we'll update our existing Route component's path to tell it to match any url in the address bar that starts with `/details` and is followed by a forward slash and then anything else.
 
 ```jsx
-<Route path="/details/:id" component={BirdDetails} />
+<Route path="/details/:id" element={ <BirdDetails />} />
 ```
 
 This will mean that if we try and navigate to http://localhost:3000/details now, it will no long match the route path because there's nothing after "details" in the URL. However, if we navigate to http://localhost:3000/details/a, it now matches the _pattern_ in the `path` attribute of one of the Route components!
@@ -321,13 +323,13 @@ Last step! Now we're going to use the id of the bird to make a fetch call for th
 Start by creating a variable called `bird` to hold the data that we get back from making an API call. This is going to be a state variable, so we need to follow the pattern that we did earlier (name your variables `bird` and `setBird`). In this case we can initialize the state with `null`.
 
 ```jsx
-const [variable, setVariable] = useState(null);
+const [variable, setVariable] = useState(null)
 ```
 
 Now, add in the `useEffect` hook:
 
 ```jsx
-useEffect(() => {}, []);
+useEffect(() => {}, [])
 ```
 
 Next, we need to add the fetch call into the useEffect callback just as we did earlier, except in this case the url is going to be: https://audubon-api.herokuapp.com/api/birds/ + the bird's id and instead of using `setBirds` to put the json data into state, we'll use the `setBird` method here.
