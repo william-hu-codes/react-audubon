@@ -15,7 +15,6 @@ Practice with useState, useEffect and React Router to build a website for the Au
 1. Fork and clone this repository.
 1. Change into the new directory with `cd react-audubon-site`.
 1. Install the project dependencies with `npm i` or `npm install`.
-1. Checkout to a new dev branch with `git checkout -b dev` so that you can make a pull request to submit this assignment.
 1. Fulfill the requirements below to complete the assignment.
 
 ## Requirements
