@@ -71,7 +71,7 @@ Next, we'll need to add useEffect to the component's function. Make sure to add 
 useEffect(() => {}, []);
 ```
 
-Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-1213/APIs-Ajax#the-api-response) lecture for your fetch call:
+Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://ga-audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-1213/APIs-Ajax#the-api-response) lecture for your fetch call:
 
 ```js
 fetch(url) //<-- the url as a string
@@ -331,7 +331,7 @@ Now, add in the `useEffect` hook:
 useEffect(() => {}, [])
 ```
 
-Next, we need to add the fetch call into the useEffect callback just as we did earlier, except in this case the url is going to be: https://audubon-api.herokuapp.com/api/birds/ + the bird's id and instead of using `setBirds` to put the json data into state, we'll use the `setBird` method here.
+Next, we need to add the fetch call into the useEffect callback just as we did earlier, except in this case the url is going to be: https://ga-audubon-api.herokuapp.com/api/birds/ + the bird's id and instead of using `setBirds` to put the json data into state, we'll use the `setBird` method here.
 
 How can we get the id of the bird? Dot into it through the props object (or you can be fancy and destructure out `match` in your function's parameters) and concatenate it to the end of the url's string! Use the Component tab to make sure that you're bird object is in state and then update the JSX so that the bird image, name, genus and conservationStatus are being displayed based on the data in state (in the `bird` object).
 
