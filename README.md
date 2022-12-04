@@ -309,15 +309,11 @@ This will mean that if we try and navigate to http://localhost:3000/details now,
 
 Another thing that happens is that we now have the ability to get the value of the dynamic segment using its variable name. In this case, we used the variable name `id` for this param when we defined the route and wrote `:id`. The param variable's name is whatever we put after the colon.
 
-Go to the home route by clicking on the site's title at the top of the page and then click on any of the birds. Notice that the link matches the pattern for the BirdDetails route and displays the static component data that's in BirdDetails right now.
-
-Now, go to the Component tab in the browser and click on the BirdDetails component in the tree. Notice that there are now three new objects in props: `history`, `location`, and `match`! All of these objects are data that is passed to our component by the Route that renders it. Toggle open the `match` object and note that the params object inside it contains an `id` property with the id of the bird that you clicked!
-
-![image](https://media.git.generalassemb.ly/user/17300/files/8a7e9500-12ee-11eb-88de-deb741d25fd1)
+Go to the home route by clicking on the site's title at the top of the page and then click on any of the birds. Notice that the link matches the pattern for the BirdDetails route and displays the static component data that's in BirdDetails right now. To access this param value we will need to 'use' the params. React Router 6 provides a custom hook that will provide us information about the url path. 
 
 ### Step 10. Use the params to render the corresponding bird details
 
-Last step! Now we're going to use the id of the bird to make a fetch call for the details about our bird! Inside of the BirdDetails.js import both `useState` and `useEffect`.
+Last step! Now we're going to use the id of the bird to make a fetch call for the details about our bird! Inside of the BirdDetails.js import both `useState` and `useEffect` from react. We will also need to import `useParams` from the `react-router-dom` library.
 
 Start by creating a variable called `bird` to hold the data that we get back from making an API call. This is going to be a state variable, so we need to follow the pattern that we did earlier (name your variables `bird` and `setBird`). In this case we can initialize the state with `null`.
 
@@ -333,7 +329,30 @@ useEffect(() => {}, [])
 
 Next, we need to add the fetch call into the useEffect callback just as we did earlier, except in this case the url is going to be: https://ga-audubon-api.herokuapp.com/api/birds/ + the bird's id and instead of using `setBirds` to put the json data into state, we'll use the `setBird` method here.
 
-How can we get the id of the bird? Dot into it through the props object (or you can be fancy and destructure out `match` in your function's parameters) and concatenate it to the end of the url's string! Use the Component tab to make sure that you're bird object is in state and then update the JSX so that the bird image, name, genus and conservationStatus are being displayed based on the data in state (in the `bird` object).
+### How can we get the id of the bird? - `useParams`
+
+In previous versions, url and browser information was provided to all components through props, but in the most recent versions react-router modified this implementation. Now location, history, and parameter information are provided to each component through a special hook. To access the `id` property of our detail's url you will use the `useParams` hook we imported earlier. 
+
+```jsx
+
+// import for react and react-router-dom hooks  
+
+function BirdDetails(props){ 
+  
+  const {id} = useParams() 
+  console.log(id) // "6386af5dc662da2960dee1b4"
+   
+}
+
+
+```
+The remaining state and useEffect code comes below your useParams variable. Tthe params data can then be used to make your fetch call.  
+
+After you are able to access your params data, you can set up your useEffect inside `< BirdDetails />`. 
+
+You might have noticed the `{ }` wrapping our id variable. This syntax uses JS "object destructuring" to access the id data from the useParams object. When we invoke `useParams` it always returns an object containing param data from the url path (example: { id: "..." }). With object destructuring we can declare a variable that matches a key in the params object.
+
+
 
 > ### Why Use Multiple API Calls?
 >
