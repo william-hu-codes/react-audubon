@@ -2,7 +2,7 @@
 
 # Audubon Society Website
 
-Practice with useState, useEffect and React Router to build a website for the Audubon Society. [_Check out the completed project._](https://react-audubon-site.surge.sh/)
+Practice with useState, useEffect and React Router to build a website for the Audubon Society. 
 
 ## Prerequisites
 
