@@ -101,15 +101,15 @@ Now that we have data we can display the birds on the page. There are already so
 First, just get your JSX to correctly output the HTML with hardcoded data:
 
 ```html
-<section class="container">
-  <div class="card">
-    <div class="card-image">
+<section className="container">
+  <div className="card">
+    <div className="card-image">
       <img
         src="https://media.audubon.org/nas_birdapi/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
         alt="Acadian Flycatcher"
       />
     </div>
-    <div class="card-title">
+    <div className="card-title">
       <h3>Acadian Flycatcher</h3>
     </div>
   </div>
