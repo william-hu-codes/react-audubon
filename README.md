@@ -23,7 +23,7 @@ The Audubon Society has asked you to build them a website where users can see an
 
 ### Step 1. Install React Router
 
-To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file in the same way that we did it during the [lecture](https://git.generalassemb.ly/sei-1213/react-router/blob/master/README.md#importing-dependencies).
+To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file in the same way that we did it during the lecture.
 
 1. Use the npm command to install `react-router-dom`.
 1. In the index.js file `import { BrowserRouter as Router } from 'react-router-dom'`.
@@ -71,7 +71,7 @@ Next, we'll need to add useEffect to the component's function. Make sure to add 
 useEffect(() => {}, []);
 ```
 
-Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://ga-audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-1213/APIs-Ajax#the-api-response) lecture for your fetch call:
+Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://ga-audubon-api.herokuapp.com/api/birds. Use the pattern in the react-router lecture for your fetch call:
 
 ```js
 fetch(url) //<-- the url as a string
@@ -105,7 +105,7 @@ First, just get your JSX to correctly output the HTML with hardcoded data:
   <div class="card">
     <div class="card-image">
       <img
-        src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
+        src="https://media.audubon.org/nas_birdapi/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
         alt="Acadian Flycatcher"
       />
     </div>
@@ -132,7 +132,7 @@ return (
     <div className="card">
       <div className="card-image">
         <img
-          src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
+          src="https://media.audubon.org/nas_birdapi/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
           alt="Acadian Flycatcher"
         />
       </div>
@@ -157,7 +157,7 @@ return (
     <div className="card">
       <div className="card-image">
         <img
-          src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
+          src="https://media.audubon.org/nas_birdapi/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
           alt="Acadian Flycatcher"
         />
       </div>
@@ -179,7 +179,7 @@ return (
         <div className="card">
           <div className="card-image">
             <img
-              src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
+              src="https://media.audubon.org/nas_birdapi/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
               alt="Acadian Flycatcher"
             />
           </div>
@@ -227,7 +227,7 @@ Create another component called `BirdDetails`. **Make sure to add a parameter ca
 return (
   <div className="details-container">
     <img
-      src="https://www.audubon.org/sites/default/files/styles/bird_illustration/public/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
+      src="https://media.audubon.org/nas_birdapi/4492_Sibl_9780307957900_art_r1.jpg?itok=8HuhVVIy"
       alt="Acadian Flycatcher"
     />
     <div className="details">
