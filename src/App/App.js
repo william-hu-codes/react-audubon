@@ -1,4 +1,6 @@
 import React from 'react';
+import "./App.css"
+import Birds from '../components/Birds';
 
 function App() {
   return (
@@ -8,7 +10,9 @@ function App() {
           <a href="/">Audubon Society</a>
         </h1>
       </header>
-      <main></main>
+      <main>
+          <Birds />
+      </main>
     </>
   );
 }
