@@ -1,8 +1,9 @@
-import React from 'react';
 import "./App.css"
-import Birds from '../components/Birds';
+import React from 'react';
+import Birds from '../components/Birds/Birds';
 
 function App() {
+  
   return (
     <>
       <header>
@@ -11,7 +12,7 @@ function App() {
         </h1>
       </header>
       <main>
-          <Birds />
+        <Birds />
       </main>
     </>
   );
