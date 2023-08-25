@@ -1,5 +1,6 @@
 import "./Birds.css"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 
 export default function(props) {
@@ -19,17 +20,19 @@ export default function(props) {
 
     const birdsList = birds.map((bird) => {
         return (
-            <div className="card">
-                <div className="card-image">
-                    <img
-                        src={bird.image}
-                        alt={bird.name}
-                    />
+            <Link key={bird._id} to={`/details/${bird._id}`} >
+                <div className="card">
+                    <div className="card-image">
+                        <img
+                            src={bird.image}
+                            alt={bird.name}
+                        />
+                    </div>
+                    <div className="card-title">
+                        <h3>{bird.name}</h3>
+                    </div>
                 </div>
-                <div className="card-title">
-                    <h3>{bird.name}</h3>
-                </div>
-            </div>
+            </Link>
         )
     })
 
