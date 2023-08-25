@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-form > input {
+    height: 40px;
+    width: 400px;
+}

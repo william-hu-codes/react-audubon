@@ -3,6 +3,7 @@ import React from 'react';
 import Birds from '../components/Birds/Birds';
 import { Routes, Route } from "react-router-dom"
 import BirdDetails from "../components/BirdDetails/BirdDetails";
+import NewBirdForm from "../components/NewBirdForm/NewBirdForm"
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Birds /> } />
           <Route path="/details/:id" element={ <BirdDetails /> } />
+          <Route path="/new" element={ <NewBirdForm /> } />
         </Routes>
       </main>
     </>
