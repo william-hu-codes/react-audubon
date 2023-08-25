@@ -1,6 +1,8 @@
 import "./App.css"
 import React from 'react';
 import Birds from '../components/Birds/Birds';
+import { Routes, Route } from "react-router-dom"
+import BirdDetails from "../components/BirdDetails/BirdDetails";
 
 function App() {
   
@@ -12,7 +14,10 @@ function App() {
         </h1>
       </header>
       <main>
-        <Birds />
+        <Routes>
+          <Route path="/" element={ <Birds /> } />
+          <Route path="/details" element={ <BirdDetails /> } />
+        </Routes>
       </main>
     </>
   );
