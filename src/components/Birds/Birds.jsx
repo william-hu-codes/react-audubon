@@ -36,6 +36,10 @@ export default function(props) {
         )
     })
 
+    if (!birds) {
+        return <h3>Loading birds...</h3>
+    }
+    
     return(
         <section className="container">
             {birdsList}
