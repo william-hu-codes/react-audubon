@@ -3,6 +3,8 @@ import { useState } from "react"
 
  export default function({ birds, addBird }) {
     const [formData, setFormData] = useState({})
+    // const navigate = useNavigate()
+
     function handleChange(evt) {
         const newFormData = {...formData, [evt.target.name]:evt.target.value}
         setFormData(newFormData)
@@ -12,12 +14,11 @@ import { useState } from "react"
         evt.preventDefault()
         console.log("submitting form")
         formData._id = (Date.now() % 1000000).toString()
-        console.log(formData._id)
+        // console.log(formData._id)
         addBird(formData)
         setFormData({})
-
     }
-    console.log(birds)
+    console.log("form data: ", formData)
     // console.log("form data: ", formData)
     return (
         <div className="form-container">

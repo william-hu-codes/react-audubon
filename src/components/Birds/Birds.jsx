@@ -10,13 +10,13 @@ export default function({ birds, setBirds }) {
             const response = await fetch("https://ga-audubon-api.herokuapp.com/api/birds")
             const birdsData = await response.json()
             setBirds(birdsData)
-            // console.log(birdsData)
+            console.log("mounting birds and doing initial fetch!")
         } catch(err) {
             console.log(err)
         }
     }, [])
-    
-    console.log(birds)
+
+    // console.log(birds)
 
     const birdsList = birds.map((bird) => {
         return (
