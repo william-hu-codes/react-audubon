@@ -1,7 +1,7 @@
 import "./NewBirdForm.css"
 import { useState } from "react"
 
- export default function(props) {
+ export default function({ birds, addBird }) {
     const [formData, setFormData] = useState({})
     function handleChange(evt) {
         const newFormData = {...formData, [evt.target.name]:evt.target.value}
@@ -9,8 +9,15 @@ import { useState } from "react"
     }
 
     function handleFormSubmission(evt) {
+        evt.preventDefault()
         console.log("submitting form")
+        formData._id = (Date.now() % 1000000).toString()
+        console.log(formData._id)
+        addBird(formData)
+        setFormData({})
+
     }
+    console.log(birds)
     // console.log("form data: ", formData)
     return (
         <div className="form-container">

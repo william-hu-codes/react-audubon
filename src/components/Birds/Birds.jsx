@@ -15,6 +15,8 @@ export default function({ birds, setBirds }) {
             console.log(err)
         }
     }, [])
+    
+    console.log(birds)
 
     const birdsList = birds.map((bird) => {
         return (
