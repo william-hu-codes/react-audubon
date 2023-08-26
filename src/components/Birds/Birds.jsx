@@ -3,9 +3,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 
-export default function(props) {
-
-    const [birds, setBirds] = useState([])
+export default function({ birds, setBirds }) {
 
     useEffect(async () => {
         try {
