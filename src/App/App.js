@@ -19,7 +19,7 @@ function App() {
     <>
       <header>
         <h1>
-          <a href="/">Audubon Society</a>
+          <Link to="/"> Audubon Society </Link>
         </h1>
         <Link to="/new"> Add New Bird </Link>
       </header>
